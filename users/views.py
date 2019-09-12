@@ -45,14 +45,12 @@ def login(request):
     }, status=status.HTTP_200_OK)
 
 
-
 class UserListAPIView(generics.ListAPIView):
 
     permission_classes = (IsAdmin, )
     queryset = CustomUser.objects.filter(is_active=True)
     serializer_class = UserSerializer
     
-
 
 class UserRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
  
@@ -73,13 +71,11 @@ class UserRetrieveAPIView(generics.RetrieveUpdateDestroyAPIView):
         return [permission() for permission in permission_classes]
 
 
-
 class UserCreateAPIView(generics.CreateAPIView):
  
     permission_classes = (IsRole_2, )
     serializer_class = UserSerializer
     queryset = CustomUser.objects.all()
-
 
 
 class UserFilteredListAPIView(generics.ListAPIView):
